@@ -9,10 +9,9 @@ Afterwards checked the code and fixed small things.
 
 ////////////////////////////////
 
-#include "wokwi-api.h" 
+#include "wokwi-api.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 typedef struct {
   pin_t pin_stb;
