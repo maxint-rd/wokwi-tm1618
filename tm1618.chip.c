@@ -95,55 +95,6 @@ static void on_timer_tick(void *user_data) {
   }
 }
 
-/*
-static void on_timer_tick(void *user_data) {
-  chip_state_t *chip = (chip_state_t *)user_data;
-
-  if (chip->is_scanning) {
-    // --- PHASE 1: KEY SCANNING ---
-    // Blank display (Common Cathode: Grids HIGH = OFF)
-    for (int i = 0; i < 4; i++) pin_write(chip->grid_pins[i], HIGH);
-    
-    // Reset key registers
-    memset(chip->key_data, 0, 3);
-
-    for (int ks = 0; ks < 5; ks++) {
-      // Set KS lines HIGH, then pulse the target LOW
-      for(int j=0; j<5; j++) pin_write(chip->seg_pins[j], HIGH);
-      pin_write(chip->seg_pins[ks], LOW);
-      
-      // Check K1 status
-      if (pin_read(chip->pin_k1) == LOW) {
-        if (ks == 0) chip->key_data[0] |= (1 << 1); // KS1
-        if (ks == 1) chip->key_data[0] |= (1 << 4); // KS2
-        if (ks == 2) chip->key_data[1] |= (1 << 1); // KS3
-        if (ks == 3) chip->key_data[1] |= (1 << 4); // KS4
-        if (ks == 4) chip->key_data[2] |= (1 << 1); // KS5
-      }
-    }
-    chip->is_scanning = false; // Next tick will display
-  } 
-  else {
-    // --- PHASE 2: DISPLAY REFRESH ---
-    if (chip->display_on) {
-      uint8_t even_val = chip->ram[chip->active_grid * 2];
-      uint8_t odd_val  = chip->ram[(chip->active_grid * 2) + 1];
-      
-      // Mapping: SEG1-5 (Even [4:0]), SEG6-8 (Odd [5:3])
-      uint8_t full_seg = (even_val & 0x1F) | (((odd_val >> 3) & 0x07) << 5);
-
-      for (int i = 0; i < 8; i++) {
-        pin_write(chip->seg_pins[i], (full_seg & (1 << i)) ? HIGH : LOW);
-      }
-
-      pin_write(chip->grid_pins[chip->active_grid], LOW);
-      chip->active_grid = (chip->active_grid + 1) % 4;
-    }
-    chip->is_scanning = true; // Next tick will scan
-  }
-}
-*/
-
 void process_byte(chip_state_t *chip) {
   uint8_t b = chip->current_byte;
   if (!chip->command_mode) {
