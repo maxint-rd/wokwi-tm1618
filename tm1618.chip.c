@@ -12,6 +12,7 @@ Afterwards checked the code and fixed small things.
 #include "wokwi-api.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>  // needed for memset()
 
 typedef struct {
   pin_t pin_stb;
