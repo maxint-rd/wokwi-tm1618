@@ -1,0 +1,8 @@
+{
+  "name": "tm1618",
+  "author": "Gemini/Maxint-RD",
+  "pins": [
+    "DIO", "CLK", "STB", "K1", "VDD", "SEG1", "SEG2", "SEG3", "SEG4",
+    "SEG5", "SEG6", "SEG7", "SEG8", "GRID4", "GRID3", "GND", "GRID2", "GRID1"
+  ]
+}
