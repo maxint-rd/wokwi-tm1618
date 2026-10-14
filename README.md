@@ -1,9 +1,12 @@
 # wokwi-tm1618
-Wokwi custom chip TM1618. The
+Wokwi custom chip TM1618. The TM1618 is a LED-driver chip with button interface, that allows easy connection of multi-segment LED displays to a microcontroller. The TM16xx Arduino library makes it very easy to use these and similar chips in on a variety of Arduino platforms. Wokwi allows users to play with virtual hardware within their browser.
 
-### NOTE: this project is still in development ###
+### NOTE: this project is still in development
 I'm still trying to get it al going. You can have a look but it's not fully working yet!
-
+Currently supported:
+- setting segments
+- clearing display
+- reading key-state.
 
 ### Live examples
 - [Example demonstrating TM1618 custom component](https://wokwi.com/projects/452129958367862785) [Working]
