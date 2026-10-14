@@ -181,9 +181,13 @@ void chip_init() {
   printf("chip_init start\n");
   chip_state_t *chip = malloc(sizeof(chip_state_t));
   memset(chip->ram, 0, 14);
+  chip->current_byte=0;
   chip->display_on = false;
   chip->active_grid = 0;
   chip->command_mode = true;
+  chip->reading_keys=false;
+  chip->is_scanning=false;
+  memset(chip->key_data, 0, sizeof(chip->key_data));
 
   chip->pin_stb = pin_init("STB", INPUT);
   chip->pin_clk = pin_init("CLK", INPUT);
