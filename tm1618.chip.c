@@ -182,6 +182,7 @@ void chip_init() {
   chip_state_t *chip = malloc(sizeof(chip_state_t));
   memset(chip->ram, 0, 14);
   chip->current_byte=0;
+  chip->address = 0;
   chip->display_on = false;
   chip->active_grid = 0;
   chip->command_mode = true;
