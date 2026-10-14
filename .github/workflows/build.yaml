@@ -15,8 +15,9 @@ jobs:
         uses: wokwi/wokwi-chip-clang-action@main
         with:
           sources: "tm1618.chip.c"
+          chip-json: "tm1618.chip.json"
       - name: Copy chip.json
-        run: sudo cp chip.json dist
+        run: sudo cp tm1618.chip.json dist/chip.json
       - name: 'Upload Artifacts'
         uses: actions/upload-artifact@v4
         with:
@@ -31,6 +32,8 @@ jobs:
     needs: build
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Download compiled chip
         uses: actions/download-artifact@v4
